@@ -46,6 +46,34 @@ namespace CrudApi.Controllers
 
             return produto;
         }
+        [HttpGet("GetProdutoNome/{nome}")]
+        public async Task<ActionResult<ProdutoDTO>> GetProdutoNome(string nome)
+        {
+           
+            var produtosComMesmoNome = await _context.Produto
+                .Where(p => p.Descricao == nome)
+                .ToListAsync();
+
+            if (produtosComMesmoNome == null || produtosComMesmoNome.Count == 0)
+            {
+                return NotFound();
+            }
+
+            
+            foreach (var produto in produtosComMesmoNome)
+            {
+                produto.Categoria = await _context.Categoria.FirstOrDefaultAsync(c => c.Id == produto.CategoriaId);
+            }
+
+            var produtoDTO = new ProdutoDTO
+            {
+                Produtos = produtosComMesmoNome
+            };
+
+            return produtoDTO;
+        }
+
+
 
         // PUT: api/Produtoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -42,6 +42,34 @@ namespace CrudApi.Controllers
             return categoria;
         }
 
+        // GET: api/Categorias/5
+        [HttpGet("GetProdutos/{nome}")]
+        public async Task<ActionResult<CategoriaDTO>> GetProdutos( string nome)
+        {
+            var categoria = await _context.Categoria.FirstOrDefaultAsync(p => p.Nome == nome);
+            
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            
+            var produtos = await _context.Produto
+                .Where(p => p.Categoria.Nome == nome)
+                .ToListAsync();
+
+            
+            var categoriaDTO = new CategoriaDTO
+            {
+                CategoriaId = categoria.Id,
+                Nome = categoria.Nome,
+                Produtos = produtos
+            };
+
+            return categoriaDTO;
+        }
+
+
         // PUT: api/Categorias/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

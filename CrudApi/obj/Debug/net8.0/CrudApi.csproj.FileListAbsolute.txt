@@ -231,3 +231,4 @@ C:\Users\alexandro.jorge\source\repos\CrudApi\CrudApi\obj\Debug\net8.0\refint\Cr
 C:\Users\alexandro.jorge\source\repos\CrudApi\CrudApi\obj\Debug\net8.0\CrudApi.pdb
 C:\Users\alexandro.jorge\source\repos\CrudApi\CrudApi\obj\Debug\net8.0\CrudApi.genruntimeconfig.cache
 C:\Users\alexandro.jorge\source\repos\CrudApi\CrudApi\obj\Debug\net8.0\ref\CrudApi.dll
+C:\Users\alexandro.jorge\source\repos\CrudApi\CrudApi\obj\Debug\net8.0\CrudApi.sourcelink.json
