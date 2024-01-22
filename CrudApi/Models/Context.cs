@@ -11,6 +11,7 @@ namespace CrudApi.Models
 
         public DbSet<Categorias> Categoria { get; set; } = null!;
         public DbSet<Produto> Produto { get; set; } = null!;
+        public DbSet<User> usuarios { get; set; }
 
     }
 }
